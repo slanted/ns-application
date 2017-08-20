@@ -1,0 +1,71 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="ns-application">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div>
+      Runmode: [[runmode]]
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `ns-application`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class NsApplication extends Polymer.Element {
+      constructor() {
+          super();
+          console.log("Done! runmode:"+this.runmode);
+          var domain = "https://dev.nuskin.com";
+
+          if (this.runmode == 'test') {
+              domain = "https:/test.nuskin.com";
+          }
+
+
+          var scriptUrl = domain +"/js/nsjs/dist/aem-bundle.js";
+
+          var head = document.getElementsByTagName('head')[0];
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.onload = function() {
+              nuskin.init({
+                  country: "US",
+                  baseUrl: domain
+              });
+
+              if (window.appReady) {
+                  appReady();
+              }
+          }
+          script.src = scriptUrl;
+          head.appendChild(script);
+
+      }
+      static get is() { return 'ns-application'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'ns-application'
+          },
+          runmode: {
+              type: String,
+              value: 'test'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(NsApplication.is, NsApplication);
+  </script>
+</dom-module>

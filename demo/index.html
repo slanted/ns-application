@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>ns-application demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../ns-application.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic ns-application demo</h3>
+      <demo-snippet>
+        <template>
+          <ns-application></ns-application>
+        </template>
+      </demo-snippet>
+    </div>
+    <script>
+      console.log("End of html page nuskin:"+nuskin);
+      /*
+      function appReady() {
+          console.log("App ready! nuskin:",nuskin);
+          console.log("configuration:",nuskin.configuration);
+      }
+      */
+    </script>
+  </body>
+</html>
